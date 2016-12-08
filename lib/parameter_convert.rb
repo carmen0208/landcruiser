@@ -1,6 +1,8 @@
+class ArgsFormat < Exception
+end
 class ParameterConvert
   def self.convert(args)
-    return "Command should begin with PLACE, ex: PLACE 0,0,NORTH MOVE REPORT MOVE" if(args[0] != 'PLACE')
+    raise ArgsFormat, "Command should begin with PLACE, ex: PLACE 0,0,NORTH MOVE REPORT MOVE" if args[0] != 'PLACE'
     @commands = []
 
     args.each_with_index do |arg, index|
@@ -13,7 +15,7 @@ class ParameterConvert
         @commands << arg
       else
         p arg
-        return "Are you kidding me? I need the command to preform, ex: PLACE 0,0,NORTH MOVE REPORT MOVE"
+        raise ArgsFormat, "Are you kidding me? I need correct command to preform, ex: PLACE 0,0,NORTH MOVE REPORT MOVE"
       end
     end
     @commands

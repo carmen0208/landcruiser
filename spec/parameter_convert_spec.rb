@@ -3,11 +3,11 @@ describe ParameterConvert do
   context 'with invalid parameter' do
     let(:begin_without_place) { ['X,Y,facing','kkk','whatever','STOP','BUMP','MOVE'] }
     it 'Command not begin with PLACE' do
-      expect(ParameterConvert.convert(begin_without_place)).to eq("Command should begin with PLACE, ex: PLACE 0,0,NORTH MOVE REPORT MOVE")
+      expect { ParameterConvert.convert(begin_without_place) }.to raise_error("Command should begin with PLACE, ex: PLACE 0,0,NORTH MOVE REPORT MOVE")
     end
     let(:invlid_parms) { ['PLACE','X,Y,facing','kkk','whatever','STOP','BUMP','MOVE'] }
     it 'Command with invalid numbers' do
-      expect(ParameterConvert.convert(invlid_parms)).to eq("Are you kidding me? I need the command to preform, ex: PLACE 0,0,NORTH MOVE REPORT MOVE")
+      expect { ParameterConvert.convert(invlid_parms) }.to raise_error("Are you kidding me? I need correct command to preform, ex: PLACE 0,0,NORTH MOVE REPORT MOVE")
     end
   end
 
