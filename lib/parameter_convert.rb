@@ -14,7 +14,7 @@ class ParameterConvert
       when 'LEFT','RIGHT','MOVE','REPORT'
         @commands << arg
       else
-        p arg
+        # p arg
         raise ArgsFormat, "Are you kidding me? I need correct command to preform, ex: PLACE 0,0,NORTH MOVE REPORT MOVE"
       end
     end

@@ -25,7 +25,7 @@ def perform(args)
   commands.each do |command|
      case command
        when /^PLACE/
-         puts "Placed"
+        #  puts "Placed"
          x, y, face = command.split(" ")[1].split(",")
          begin
            @robot = Robot.new(x, y, face)
